@@ -36,7 +36,12 @@ def delete_all():
     run_sql(sql)
 
 def delete(id):
-    sql = "DELETE FROM tasks WHERE id = %s"
+    sql = "DELETE FROM albums WHERE id = %s"
     values = [id]
+    run_sql(sql, values)
+
+def update(album):
+    sql = "UPDATE albums SET (title, genre, artist_id) = (%s, %s, %s) WHERE id = %s"
+    values = [album.title, album.genre, album.artist.id]
     run_sql(sql, values)
 
